@@ -2,6 +2,11 @@
 
 Projeto template de API com algumas configurações já feitas
 
+### Pré-Requisitos
+
+* Java 21+
+* Maven 3.9.6+
+
 ### Como usar?
 
 1. No `application.yml`:
@@ -15,15 +20,16 @@ Projeto template de API com algumas configurações já feitas
                 username: usuario_banco
                 password: senha_banco
                 driver-class-name: driver_banco
-       ```    
-    2. Altere o ```context-path``` para um relacionado ao da sua aplicação. Se necessário, altere também a porta:
+       ``` 
+    2. Execute o script da pasta ```src/main/resources/db/migration``` para inicialização do banco de dados 
+    3. Altere o ```context-path``` para um relacionado ao da sua aplicação. Se necessário, altere também a porta:
        ```yml
        server:
          port: ${PORT:8080}
          servlet:
            context-path: ${CONTEXT_PATH:/base-url}
        ```
-    3. Caso use anexo de arquivos, altere o tamanho, se necessário:
+    4. Caso use anexo de arquivos, altere o tamanho, se necessário:
    ```yml
    servlet:
       multipart:
@@ -31,29 +37,30 @@ Projeto template de API com algumas configurações já feitas
       max-request-size: 50MB
       max-file-size: 50MB
    ```
-    4. Altere as configurações de email, caso queira utilizar, o ```JavaEmailSend```. Se não usar, pode remover:
-    ```yml
-    mail:
-      host: smtp.gmail.com
-      port: 587
-      username: noreply@email.com.br
-      password: 12345
-      protocol: smtp
-    ```
-    5. Lembrando que o valor do atributo ```ddl-auto``` está ```validate```, ou seja, ele valida o mapeamento das entidades de acordo com o que está modelado no banco de dados, é possível substituir para ```update```, ```create```, ```create-drop```, ou até mesmo ```none```.
+   5. Altere as configurações de email, caso queira utilizar, o ```JavaEmailSend```. Se não usar, pode remover:
    ```yml
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-      ddl-auto: validate
-    ```
-    6. Caso queira habilitar o Flyway altere o ```enabled``` para ```true``` e coloque os scripts de migração no caminho ```classpath:db/migration``` ou renomeie esse caminho para uma de sua preferência:
+   mail:
+    host: smtp.gmail.com
+    port: 587
+    username: noreply@email.com.br
+    password: 12345
+    protocol: smtp
+   ```
+   6. Lembrando que o valor do atributo ```ddl-auto``` está ```validate```, ou seja, ele valida o mapeamento das entidades de acordo com o que está modelado no banco de dados, é possível alterar para ```update```, ```create```, ```create-drop```, ou até mesmo ```none```.
    ```yml
-    flyway:
-      enabled: false
-      locations: classpath:db/migration
-    ```
+   hibernate:
+    naming:
+      physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    ddl-auto: validate
+   ```
+   7. Caso queira habilitar o ```Flyway``` altere o ```enabled``` para ```true``` e coloque os scripts de migração no caminho ```classpath:db/migration``` ou renomeie esse caminho para uma de sua preferência:
+   ```yml
+   flyway:
+    enabled: false
+    locations: classpath:db/migration
+   ```
+   Lembrando que no ```Flyway``` os scripts devem estar nomeados da seguinte forma: ```V1.01__sua_alteracao.sql```. Exemplo: ```V1.01__update_table_usuario.sql```.
 2. Renomeie o package ```br.com.project.spring.starter.template.api``` para ```br.com.nomesuaaplicacao.api```, tanto no ```/src/main/java``` quanto no ```/src/test/java```
 3. Renomeie o arquivo ```ProjectTemplateApiApplication``` e ```ProjectTemplateApiApplicationTests``` para ```NomeSuaAplicacaoApiApplication``` e ```NomeSuaAplicacaoApiApplicationTests```
 4. No ```pom.xml```, altere o ```<groupId>```, ```<name>``` e ```<description>```, para algo correspondente a sua aplicação:
@@ -68,6 +75,14 @@ Projeto template de API com algumas configurações já feitas
     <name>spring-starter-template-api</name>
     <description>Template Spring Starter: Projeto Template API</description>
 </project>
+```
+
+### Executando o Projeto
+
+Depois de concluídas as configurações, rode o projeto com:
+
+```sh
+mvn clean install -DskipTests spring-boot:run
 ```
 
 ### Checkstyle
