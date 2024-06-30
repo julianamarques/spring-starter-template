@@ -12,14 +12,14 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Response<B> extends ResponseEntity<B> implements Serializable {
-    private Integer statusCode;
+    private Integer status;
     private String message;
     private LocalDateTime timestamp;
     private B body;
 
     public Response() {
         super((B) null, HttpStatus.OK);
-        this.statusCode = HttpStatus.OK.value();
+        this.status = HttpStatus.OK.value();
         this.message = MensagemApiEnum.REQUISICAO_CONCLUIDA.getMessage();
         this.timestamp = LocalDateTime.now();
         this.body = null;
@@ -27,7 +27,7 @@ public class Response<B> extends ResponseEntity<B> implements Serializable {
 
     public Response(B body) {
         super(body, HttpStatus.OK);
-        this.statusCode = HttpStatus.OK.value();
+        this.status = HttpStatus.OK.value();
         this.message = MensagemApiEnum.REQUISICAO_CONCLUIDA.getMessage();
         this.timestamp = LocalDateTime.now();
         this.body = body;
@@ -35,7 +35,7 @@ public class Response<B> extends ResponseEntity<B> implements Serializable {
 
     public Response(HttpStatus status, String message, B body) {
         super(body, status);
-        this.statusCode = status.value();
+        this.status = status.value();
         this.message = message;
         this.timestamp = LocalDateTime.now();
         this.body = body;

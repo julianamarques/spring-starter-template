@@ -16,7 +16,7 @@ Projeto template de API com algumas configurações já feitas
                 password: senha_banco
                 driver-class-name: driver_banco
        ```    
-    2. Altere o ```context-path``` para um relacionado ao da sua aplicação, se necessário, altere também a porta:
+    2. Altere o ```context-path``` para um relacionado ao da sua aplicação. Se necessário, altere também a porta:
        ```yml
        server:
          port: ${PORT:8080}

@@ -18,7 +18,12 @@ public enum MensagemApiEnum {
     ACESSO_NEGADO("message.api.acesso_negado"),
     ERRO_DESCONHECIDO("message.api.erro_desconhecido"),
     ERRO_SSL_HANDSHAKE("message.api.erro_ssl_handshake"),
-    SERVICO_EXTERNO_INDISPONIVEL("message.api.externo.servico_indisponivel");
+    SERVICO_EXTERNO_INDISPONIVEL("message.api.externo.servico_indisponivel"),
+    USUARIO_NAO_ENCONTRADO("message.api.usuario_nao_encontrado"),
+    EMAIL_EXISTE("message.api.email_existe"),
+    SENHA_INVALIDA("message.api.senha_invalida"),
+    USUARIO_SENHA_INVALIDA("message.api.usuario_senha_invalida"),
+    ROLE_NAO_ENCONTRADA("message.api.role_nao_encontrada");
 
     MensagemApiEnum(String descricao) {
         this.descricao = descricao;
