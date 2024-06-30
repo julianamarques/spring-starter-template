@@ -40,7 +40,7 @@ Projeto template de API com algumas configurações já feitas
       password: 12345
       protocol: smtp
     ```
-    5. Lembrando que o valor do atributo ```ddl-auto``` está ```validate```, ou seja, ele valida o mapeamento das entidades de acordo com o que tá no banco, caso não queira isso, substituir para ```update```
+    5. Lembrando que o valor do atributo ```ddl-auto``` está ```validate```, ou seja, ele valida o mapeamento das entidades de acordo com o que está modelado no banco de dados, é possível substituir para ```update```, ```create```, ```create-drop```, ou até mesmo ```none```.
    ```yml
     hibernate:
       naming:
