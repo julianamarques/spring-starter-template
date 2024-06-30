@@ -69,3 +69,11 @@ Projeto template de API com algumas configurações já feitas
     <description>Template Spring Starter: Projeto Template API</description>
 </project>
 ```
+
+### Checkstyle
+
+Você pode verificar o checkstyle e manter o padrão de formatação do seu código através do comando:
+
+```sh
+mvn checkstyle:check
+```
