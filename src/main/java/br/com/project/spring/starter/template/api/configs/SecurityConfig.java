@@ -1,6 +1,7 @@
 package br.com.project.spring.starter.template.api.configs;
 
 import br.com.project.spring.starter.template.api.filters.AuthFilter;
+import br.com.project.spring.starter.template.api.filters.LogFilter;
 import br.com.project.spring.starter.template.api.handlers.ApiAccessDeniedHandler;
 import br.com.project.spring.starter.template.api.handlers.ApiAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ public class SecurityConfig {
     private final ApiAccessDeniedHandler apiAccessDeniedHandler;
     private final ApiAuthenticationEntryPoint apiAuthenticationEntryPoint;
     private final AuthFilter authFilter;
+    private final LogFilter logFilter;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -45,6 +47,7 @@ public class SecurityConfig {
                 .sessionManagement(sessionManagementConfigurer -> sessionManagementConfigurer
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(logFilter, AuthFilter.class)
                 .exceptionHandling(httpSecurityExceptionHandlingConfigurer -> {
                     httpSecurityExceptionHandlingConfigurer.accessDeniedHandler(apiAccessDeniedHandler);
                     httpSecurityExceptionHandlingConfigurer.authenticationEntryPoint(apiAuthenticationEntryPoint);

@@ -50,8 +50,8 @@ server:
 
 logging:
   pattern:
-    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr([${spring.application.name}]){magenta}%clr(%X{cdTransacao}){yellow}%clr(%X{contexto}){blue} %clr(%m%n){%5p} ${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
-    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr([${spring.application.name}]){magenta}%clr(%X{contexto}){magenta}%clr(%X{cdTransacao}){magenta} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr([${spring.application.name}]){magenta}%clr(%X{requestUuid}){yellow}%clr(%X{requestPathContext}){blue} %clr(%m%n){%5p} ${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr([${spring.application.name}]){magenta}%clr(%X{requestPathContext}){magenta}%clr(%X{requestUuid}){magenta} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
   level:
     org:
       hibernate:

@@ -33,6 +33,14 @@ public class Response<B> extends ResponseEntity<B> implements Serializable {
         this.body = body;
     }
 
+    public Response(HttpStatus status, B body) {
+        super(body, status);
+        this.status = status.value();
+        this.message = MensagemApiEnum.REQUISICAO_CONCLUIDA.getMessage();
+        this.timestamp = LocalDateTime.now();
+        this.body = body;
+    }
+
     public Response(HttpStatus status, String message, B body) {
         super(body, status);
         this.status = status.value();
