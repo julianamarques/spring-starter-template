@@ -22,45 +22,5 @@ CREATE TABLE roleusuario (
     PRIMARY KEY (rolefk, usuariofk)
 );
 
-CREATE TABLE medicamento (
-    id BIGSERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    datainiciotratamento DATE NULL,
-    datafimtratamento DATE NULL,
-    horaaplicacao TIME NOT NULL,
-    viaaplicacao VARCHAR(255) NOT NULL,
-    usuariofk BIGINT REFERENCES usuario(id) NOT NULL,
-);
-
-CREATE TABLE exame (
-    id BIGSERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    tipo VARCHAR(255) NULL,
-    datarealizacao DATE NULL,
-    resultado TEXT NULL,
-    usuariofk BIGINT REFERENCES usuario(id)
-);
-
-CREATE TABLE alergia (
-    id BIGSERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    tipo VARCHAR(255) NULL,
-    usuariofk BIGINT REFERENCES usuario(id)
-);
-
-CREATE TABLE vacina (
-    id BIGSERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    totaldoses INTEGER NULL,
-    usuariofk BIGINT REFERENCES usuario(id)
-);
-
-CREATE TABLE dosevacina (
-    id BIGSERIAL PRIMARY KEY,
-    numero INTEGER NULL,
-    dataaplicacao DATE NULL,
-    vacinafk BIGINT REFERENCES vacina(id)
-);
-
 INSERT INTO role(id, nome) VALUES('d8f6b9ca-471b-45ca-a6df-a64d20e883c1', 'USUARIO');
 INSERT INTO role(id, nome) VALUES('06813833-fad6-4240-8c12-992e60e26bed', 'ADMIN');
