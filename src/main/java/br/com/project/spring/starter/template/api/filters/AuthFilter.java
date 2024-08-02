@@ -37,7 +37,8 @@ public class AuthFilter extends OncePerRequestFilter {
                                     @NonNull HttpServletResponse response,
                                     @NonNull FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
-        final String token = Objects.nonNull(authHeader) && !authHeader.startsWith("Bearer ") ? authHeader.substring(7) : null;
+        final String token = Objects.nonNull(authHeader) && !authHeader.startsWith("Bearer ")
+                ? authHeader.substring(7) : null;
 
         try {
             Usuario usuario = authService.validarToken(token);
