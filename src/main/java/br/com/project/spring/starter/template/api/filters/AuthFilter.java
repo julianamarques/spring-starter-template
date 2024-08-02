@@ -37,15 +37,7 @@ public class AuthFilter extends OncePerRequestFilter {
                                     @NonNull HttpServletResponse response,
                                     @NonNull FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
-
-        if (Objects.isNull(authHeader) || !authHeader.startsWith("Bearer ")) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            filterChain.doFilter(request, response);
-
-            return;
-        }
-
-        final String token = authHeader.substring(7);
+        final String token = Objects.nonNull(authHeader) && !authHeader.startsWith("Bearer ") ? authHeader.substring(7) : null;
 
         try {
             Usuario usuario = authService.validarToken(token);
@@ -57,10 +49,12 @@ public class AuthFilter extends OncePerRequestFilter {
             auth.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(auth);
         } catch (ApiException e) {
-            Response<Object> responseApi = new Response<>(HttpStatus.UNAUTHORIZED, MensagemApiEnum.ACESSO_NEGADO.getMessage(), null);
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.setContentType("application/json");
-            response.getWriter().print(jsonUtils.objectToJson(responseApi));
+            if (e.getHttpStatus().equals(HttpStatus.UNAUTHORIZED)) {
+                Response<Object> responseApi = new Response<>(HttpStatus.UNAUTHORIZED, MensagemApiEnum.ACESSO_NEGADO.getMessage(), null);
+                response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                response.setContentType("application/json");
+                response.getWriter().print(jsonUtils.objectToJson(responseApi));
+            }
         }
 
         filterChain.doFilter(request, response);
