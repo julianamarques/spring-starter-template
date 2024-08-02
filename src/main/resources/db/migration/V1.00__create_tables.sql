@@ -15,11 +15,11 @@ CREATE TABLE role (
 );
 
 CREATE TABLE roleusuario (
-    rolefk UUID REFERENCES role(id),
-    usuariofk BIGINT REFERENCES usuario(id),
-    CONSTRAINT fk_role FOREIGN KEY (rolefk),
-    CONSTRAINT fk_usuario FOREIGN KEY (usuariofk),
-    PRIMARY KEY (rolefk, usuariofk)
+    rolefk UUID,
+    usuariofk BIGINT,
+    PRIMARY KEY (rolefk, usuariofk),
+    CONSTRAINT fk_role FOREIGN KEY (rolefk) REFERENCES role(id),
+    CONSTRAINT fk_usuario FOREIGN KEY (usuariofk) REFERENCES usuario(id)
 );
 
 INSERT INTO role(id, nome) VALUES('d8f6b9ca-471b-45ca-a6df-a64d20e883c1', 'USUARIO');
