@@ -27,7 +27,7 @@ public class ClientErrorDecoderConfig implements ErrorDecoder {
                 case BAD_REQUEST_STATUS -> new ApiExternalException(url, HttpStatus.BAD_REQUEST,
                         exceptionMessage, response.reason(), methodName);
                 case INTERNAL_SERVER_ERROR_STATUS, UNAVALIABLE_SERVICE_STATUS -> new ApiExternalException(url,
-                        HttpStatus.valueOf(response.status()), ApiMessageEnum.EXTERNAL_SERVICE_UNAVALIABLE.getDescricao());
+                        HttpStatus.valueOf(response.status()), ApiMessageEnum.EXTERNAL_SERVICE_UNAVALIABLE.getDescription());
                 default -> new ApiExternalException(url, HttpStatus.valueOf(response.status()), exceptionMessage, response.reason(), methodName);
             };
         } catch (Exception e) {
