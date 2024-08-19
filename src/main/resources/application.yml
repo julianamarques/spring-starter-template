@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: application_name
+  datasource:
+    url: url_db
+    username: user_db
+    password: password_db
+    driver-class-name: driver_db
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+      ddl-auto: validate
+  flyway:
+    enabled: false
+    locations: classpath:db/migration
+  messages:
+    encoding: utf-8
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+  web:
+    locale: pt_BR
+    resources:
+      add-mappings: false
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      enabled: true
+      max-request-size: 50MB
+      max-file-size: 50MB
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: noreply@email.com.br
+    password: 12345
+    protocol: smtp
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: ${CONTEXT_PATH:/base-url}
+
+logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr([${spring.application.name}]){magenta}%clr(%X{requestUuid}){yellow}%clr(%X{requestPathContext}){blue} %clr(%m%n){%5p} ${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr([${spring.application.name}]){magenta}%clr(%X{requestPathContext}){magenta}%clr(%X{requestUuid}){magenta} %m%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}'
+  level:
+    org:
+      hibernate:
+        type: trace
+    br.com.project.spring.starter.template.api: DEBUG
+    root: INFO
+
+application:
+  version: development
+  key:
+    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
