@@ -1,6 +1,6 @@
 # Spring Starter Template
 
-API template project with some common configurations already made and JWT authentication implemented to be used as a basis in other projects
+Template project with some common configurations already made and JWT authentication implemented to be used as a basis in other projects
 
 ### Necessary requirements 💻
 
