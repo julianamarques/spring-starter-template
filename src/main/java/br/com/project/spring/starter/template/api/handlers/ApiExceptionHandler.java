@@ -1,6 +1,6 @@
 package br.com.project.spring.starter.template.api.handlers;
 
-import br.com.project.spring.starter.template.api.dtos.Response;
+import br.com.project.spring.starter.template.api.dtos.response.Response;
 import br.com.project.spring.starter.template.api.enums.ApiMessageEnum;
 import br.com.project.spring.starter.template.api.exceptions.ApiException;
 import br.com.project.spring.starter.template.api.exceptions.ApiExternalException;

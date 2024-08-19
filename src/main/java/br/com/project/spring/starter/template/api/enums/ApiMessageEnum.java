@@ -18,20 +18,25 @@ public enum ApiMessageEnum {
     ACCESS_DENIED("message.api.access_denied"),
     UNKNOWN_ERROR("message.api.unknown_error"),
     SSL_HANDSHAKE_ERROR("message.api.ssl_handshake_error"),
-    EXTERNAL_SERVICE_UNAVALIABLE("message.api.external.unavaliable_service");
+    EXTERNAL_SERVICE_UNAVALIABLE("message.api.external.unavaliable_service"),
+    USER_NOT_FOUND("message.api.user_not_found"),
+    EMAIL_EXISTS("message.api.email_exists"),
+    INVALID_PASSWORD("message.api.invalid_password"),
+    INVALID_USER_OR_PASSWORD("message.api.user_or_password_invalid"),
+    ROLE_NOT_FOUND("message.api.role_not_found");
 
-    ApiMessageEnum(String descricao) {
-        this.descricao = descricao;
+    ApiMessageEnum(String description) {
+        this.description = description;
     }
 
     private static final ResourceBundle resourceBundle = ResourceBundle.getBundle("messages");
-    private final String descricao;
+    private final String description;
 
     public String getMessage(String... args) {
-        String message = convertToUTF8(resourceBundle.getString(this.descricao));
+        String message = convertToUTF8(resourceBundle.getString(this.description));
 
         if (message.contains("�")) {
-            message = resourceBundle.getString(this.descricao);
+            message = resourceBundle.getString(this.description);
         }
 
         return Objects.isNull(args) ? message : MessageFormat.format(message, (Object) args);

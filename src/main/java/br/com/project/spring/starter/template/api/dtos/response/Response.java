@@ -1,4 +1,4 @@
-package br.com.project.spring.starter.template.api.dtos;
+package br.com.project.spring.starter.template.api.dtos.response;
 
 import br.com.project.spring.starter.template.api.enums.ApiMessageEnum;
 import lombok.Getter;

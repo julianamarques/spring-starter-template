@@ -1,6 +1,6 @@
 package br.com.project.spring.starter.template.api.controllers;
 
-import br.com.project.spring.starter.template.api.dtos.Response;
+import br.com.project.spring.starter.template.api.dtos.response.Response;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
