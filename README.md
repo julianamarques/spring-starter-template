@@ -1,16 +1,16 @@
 # Spring Starter Template
 
-API template project with some common configurations already made and JWT authentication implemented
+Projeto de modelo de API com algumas configurações comuns já feitas e autenticação JWT implementada para ser usado como base em outros projetos
 
-### Necessary requirements 💻
+### Requisitos Necessários 💻
 
 * Java 21+
 * Maven 3.9.6+
 
-### How to use? ⚙️
+### Como usar? ⚙️
 
-1. In `application.yml`:
-    1. Change with the application name and database credentials:
+1. No `application.yml`:
+    1. Altere com o nome da aplicação e as credenciais do banco:
        ```yml
         spring:
             application:
@@ -21,15 +21,15 @@ API template project with some common configurations already made and JWT authen
                 password: password_db
                 driver-class-name: driver_db
        ``` 
-    2. Run the script from the ```src/main/resources/db/migration``` folder to initialize the database
-    3. Change the ```context-path``` to one related to your application. If necessary, also change the port:
+    2. Execute o script da pasta ```src/main/resources/db/migration``` para inicialização do banco de dados 
+    3. Altere o ```context-path``` para um relacionado ao da sua aplicação. Se necessário, altere também a porta:
        ```yml
        server:
          port: ${PORT:8080}
          servlet:
            context-path: ${CONTEXT_PATH:/base-url}
        ```
-    4. If you use file attachments, change the size of the attached files if necessary:
+    4. Caso use anexo de arquivos, altere o tamanho dos arquivos anexados, se necessário:
    ```yml
    servlet:
       multipart:
@@ -37,7 +37,7 @@ API template project with some common configurations already made and JWT authen
       max-request-size: 50MB
       max-file-size: 50MB
    ```
-    5. Change the email settings, if you want to use ```JavaEmailSend```. If you don't use it, you can remove:
+   5. Altere as configurações de email, caso queira utilizar, o ```JavaEmailSend```. Se não usar, pode remover:
    ```yml
    mail:
     host: smtp.gmail.com
@@ -46,7 +46,7 @@ API template project with some common configurations already made and JWT authen
     password: 12345
     protocol: smtp
    ```
-    6. Remembering that the value of the ```ddl-auto``` attribute is ```validate```, that is, it validates the mapping of entities according to what is modeled in the database, it is possible to change it to ```update```, ```create```, ```create-drop```, or even ```none```.
+   6. Lembrando que o valor do atributo ```ddl-auto``` está ```validate```, ou seja, ele valida o mapeamento das entidades de acordo com o que está modelado no banco de dados, é possível alterar para ```update```, ```create```, ```create-drop```, ou até mesmo ```none```.
    ```yml
    hibernate:
     naming:
@@ -54,32 +54,32 @@ API template project with some common configurations already made and JWT authen
       implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
     ddl-auto: validate
    ```
-    7. If you want to enable ```Flyway``` change ```enabled``` to ```true``` and place the migration scripts in the path ```classpath:db/migration``` or rename it path to one of your preference:
+   7. Caso queira habilitar o ```Flyway``` altere o ```enabled``` para ```true``` e coloque os scripts de migração no caminho ```classpath:db/migration``` ou renomeie esse caminho para uma de sua preferência:
    ```yml
    flyway:
     enabled: false
     locations: classpath:db/migration
    ```
-   Remembering that in ```Flyway``` the scripts must be named as follows: ```V1.01__your_change.sql```. Example: ```V1.01__update_table_user.sql```.
-2. Rename the package ```br.com.project.spring.starter.template.api``` to ```br.com.yourapplication.api```, both in ```/src/main/java``` as in ```/src/test/java```
-3. Rename the file ```ProjectTemplateApiApplication``` and ```ProjectTemplateApiApplicationTests``` to ```NomeSuaAplicacaoApiApplication``` and ```NomeSuaAplicacaoApiApplicationTests```
-4. In ```pom.xml```, change the ```<groupId>```, ```<name>``` and ```<description>```, to something corresponding to your application:
+   Lembrando que no ```Flyway``` os scripts devem estar nomeados da seguinte forma: ```V1.01__sua_alteracao.sql```. Exemplo: ```V1.01__update_table_usuario.sql```.
+2. Renomeie o package ```br.com.project.spring.starter.template.api``` para ```br.com.nomesuaaplicacao.api```, tanto no ```/src/main/java``` quanto no ```/src/test/java```
+3. Renomeie o arquivo ```ProjectTemplateApiApplication``` e ```ProjectTemplateApiApplicationTests``` para ```NomeSuaAplicacaoApiApplication``` e ```NomeSuaAplicacaoApiApplicationTests```
+4. No ```pom.xml```, altere o ```<groupId>```, ```<name>``` e ```<description>```, para algo correspondente a sua aplicação:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>br.com.project.spring.starter.template</groupId>
-    <artifactId>api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-starter-template-api</name>
-    <description>Spring Starter Template: Template Project</description>
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>br.com.project.spring.starter.template</groupId>
+   <artifactId>api</artifactId>
+   <version>0.0.1-SNAPSHOT</version>
+   <name>spring-starter-template-api</name>
+   <description>Spring Starter Template: Template Project</description>
 </project>
 ```
 
-### Running the project ▶️
+### Executando o Projeto ▶️
 
-After the configurations are completed, run the project with:
+Depois de concluídas as configurações, rode o projeto com:
 
 ```sh
 mvn clean install -DskipTests spring-boot:run
@@ -87,12 +87,16 @@ mvn clean install -DskipTests spring-boot:run
 
 ### Checkstyle ✅
 
-You can check the checkstyle and maintain the formatting standard of your code using the command:
+Você pode verificar o checkstyle e manter o padrão de formatação do seu código através do comando:
 
 ```sh
 mvn checkstyle:check
 ```
 
-### Contributting 🤝
+### Contribuições 🤝
 
-Contributions are welcome! Feel free to open a pull request to propose improvements or fixes.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma pull request para propor melhorias ou correções.
+
+### Leia em Inglês 🇬🇧
+
+[Clique aqui para ler em inglês](README_EN.md)
