@@ -16,7 +16,7 @@ CREATE TABLE role (
 
 CREATE TABLE roleuser (
     rolefk UUID,
-    userfk BIGINT,
+    userfk UUID,
     PRIMARY KEY (rolefk, userfk),
     CONSTRAINT fk_role FOREIGN KEY (rolefk) REFERENCES role(id),
     CONSTRAINT fk_user FOREIGN KEY (userfk) REFERENCES user(id)
