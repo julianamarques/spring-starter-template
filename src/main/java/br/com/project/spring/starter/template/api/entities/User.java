@@ -12,6 +12,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -20,9 +21,8 @@ import java.util.Objects;
 @Table(name = "user")
 public class User implements Serializable, UserDetails {
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id", columnDefinition = "VARCHAR(255)")
+    private UUID id;
     @Column(name = "name")
     private String name;
     @Column(name = "email")
