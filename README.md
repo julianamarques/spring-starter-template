@@ -99,4 +99,4 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir uma pull request
 
 ### Leia em Inglês 🇬🇧
 
-[Clique aqui para ler em inglês](README_EN.md)
+[Read in english](README_EN.md)
