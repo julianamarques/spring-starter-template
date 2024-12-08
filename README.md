@@ -97,6 +97,6 @@ mvn checkstyle:check
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma pull request para propor melhorias ou correções.
 
-### Leia em Inglês 🇬🇧
+### Read in Engish 🇬🇧
 
-[Read in english](README_EN.md)
+[Click here to read in english](README_EN.md)
