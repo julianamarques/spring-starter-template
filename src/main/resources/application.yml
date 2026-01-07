@@ -1,24 +1,11 @@
 spring:
   application:
-    name: application_name
-  datasource:
-    url: url_db
-    username: user_db
-    password: password_db
-    driver-class-name: driver_db
-  jpa:
-    properties:
-      hibernate:
-        format_sql: true
-        show_sql: true
-    hibernate:
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
-      ddl-auto: validate
-  flyway:
-    enabled: false
-    locations: classpath:db/migration
+    name: sigec-api
+  profiles:
+    active: dev
+  output:
+    ansi:
+      enabled: always
   messages:
     encoding: utf-8
   jackson:
@@ -36,17 +23,11 @@ spring:
       enabled: true
       max-request-size: 50MB
       max-file-size: 50MB
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: noreply@email.com.br
-    password: 12345
-    protocol: smtp
 
 server:
   port: ${PORT:8080}
   servlet:
-    context-path: ${CONTEXT_PATH:/base-url}
+    context-path: ${CONTEXT_PATH:/}
 
 logging:
   pattern:
@@ -58,8 +39,3 @@ logging:
         type: trace
     br.com.project.spring.starter.template.api: DEBUG
     root: INFO
-
-application:
-  version: development
-  key:
-    secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
