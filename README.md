@@ -1,6 +1,6 @@
 # Spring Starter Template
 
-API do CREA-PI
+Projeto template com algumas configurações comuns já feitas e autenticação JWT implementada para ser usado como base em outros projetos
 
 ### Requisitos Necessários 💻
 
@@ -21,7 +21,7 @@ API do CREA-PI
                 password: password_db
                 driver-class-name: driver_db
        ``` 
-    2. Execute o ‘script’ da pasta ```src/main/resources/db/migration``` para inicialização do banco de dados 
+    2. Execute o script da pasta ```src/main/resources/db/migration``` para inicialização do banco de dados 
     3. Altere o ```context-path``` para um relacionado ao da sua aplicação. Se necessário, altere também a porta:
        ```yml
        server:
